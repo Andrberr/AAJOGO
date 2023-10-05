@@ -5,7 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.aajogo.jogo.sure.databinding.FragmentSplashBinding
 import com.aajogo.jogo.sure.ui.MainViewModel
@@ -18,7 +19,7 @@ class SplashFragment : Fragment() {
     private var _binding: FragmentSplashBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by activityViewModels<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +38,8 @@ class SplashFragment : Fragment() {
         viewModel.viewEffect.observe(viewLifecycleOwner) { effect ->
             if (effect is MainViewModel.ViewEffect.UrlResponse) {
                 navigate(effect.response)
+            } else {
+                Toast.makeText(requireContext(), NETWORK_ERROR, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -71,5 +74,6 @@ class SplashFragment : Fragment() {
         private const val HTTP = "http"
         private const val HTTPS = "https"
         private const val REG_EXPR = "<body>(.*?)</body>"
+        private const val NETWORK_ERROR = "Network Error!"
     }
 }
