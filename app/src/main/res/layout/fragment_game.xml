@@ -70,7 +70,7 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/spinLayout"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -82,16 +82,18 @@
 
         <ImageView
             android:id="@+id/spinBgView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/spin_bg" />
 
         <RelativeLayout
             android:id="@+id/spinWinLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/spinWinButton"
@@ -114,11 +116,13 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="300dp"
-            android:layout_height="305dp"
-            android:layout_below="@id/spinWinLayout"
-            android:layout_centerHorizontal="true"
+            android:layout_height="0dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/spin_group_bg">
+            android:background="@drawable/spin_group_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.73"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinWinLayout">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/spinRecycler1"
@@ -135,7 +139,7 @@
                 android:id="@+id/spinRecycler2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="6dp"
                 android:layout_marginBottom="7dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/spinRecycler1"
@@ -159,6 +163,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/spin_frame"
                 android:visibility="gone"
+                android:layout_marginBottom="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -166,7 +171,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
         android:id="@+id/bidLayout"
@@ -235,18 +240,20 @@
     <ImageView
         android:id="@+id/spinButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintHeight_percent="0.1"
         android:background="@drawable/spin_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bidLayout" />
+        app:layout_constraintTop_toBottomOf="@id/bidLayout"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ImageView
         android:id="@+id/winBg"
-        android:visibility="gone"
-        android:background="@drawable/win_bg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/win_bg"
+        android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
