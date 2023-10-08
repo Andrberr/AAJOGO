@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.aajogo.jogo.sure.ui.splash.SplashFragment"
+        android:name="com.aajogo.jogo.sure.ui.splash.AajogoSplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash">
         <action
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.aajogo.jogo.sure.ui.game.menu.MenuFragment"
+        android:name="com.aajogo.jogo.sure.ui.game.menu.AajogoMenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
         <action
@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/optionsFragment"
-        android:name="com.aajogo.jogo.sure.ui.game.options.OptionsFragment"
+        android:name="com.aajogo.jogo.sure.ui.game.options.AajogoOptionsFragment"
         android:label="fragment_options"
         tools:layout="@layout/fragment_options" >
         <action

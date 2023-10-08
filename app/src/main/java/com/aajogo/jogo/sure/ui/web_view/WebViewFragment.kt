@@ -30,13 +30,15 @@ class WebViewFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentWebViewBinding.inflate(inflater, container, false)
+        val attachToParent = false
+        _binding = FragmentWebViewBinding.inflate(inflater, container, attachToParent)
         return binding.root
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
+        val aajogoWebView = binding.webView
         super.onSaveInstanceState(outState)
-        binding.webView.saveState(outState)
+        aajogoWebView.saveState(outState)
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -59,7 +61,7 @@ class WebViewFragment : Fragment() {
                     val chooserIntent = Intent(Intent.ACTION_CHOOSER)
                     chooserIntent.putExtra(Intent.EXTRA_INTENT, intent)
                     chooserIntent.putExtra(Intent.EXTRA_TITLE, "Выберите действие")
-                    startActivityForResult(chooserIntent, FILE_CHOOSER_REQUEST_CODE)
+                    startActivityForResult(chooserIntent, 123)
                     return true
                 }
             }
@@ -81,7 +83,7 @@ class WebViewFragment : Fragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == FILE_CHOOSER_REQUEST_CODE) {
+        if (requestCode == 123) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null && data.data != null) {
                     mFilePathCallback?.onReceiveValue(arrayOf(data.data!!))
@@ -98,9 +100,5 @@ class WebViewFragment : Fragment() {
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
-    }
-
-    companion object {
-        private const val FILE_CHOOSER_REQUEST_CODE = 123
     }
 }

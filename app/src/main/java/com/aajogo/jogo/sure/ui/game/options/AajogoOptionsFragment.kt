@@ -13,7 +13,7 @@ import com.aajogo.jogo.sure.databinding.FragmentOptionsBinding
 import com.aajogo.jogo.sure.ui.MainViewModel
 import com.aajogo.jogo.sure.ui.game.MusicPlayer
 
-class OptionsFragment : Fragment() {
+class AajogoOptionsFragment : Fragment() {
 
     private var _binding: FragmentOptionsBinding? = null
     private val binding get() = _binding!!
@@ -72,7 +72,7 @@ class OptionsFragment : Fragment() {
     }
 
     private fun navigateToMenu() {
-        val action = OptionsFragmentDirections.actionOptionsFragmentToMenuFragment()
+        val action = AajogoOptionsFragmentDirections.actionOptionsFragmentToMenuFragment()
         findNavController().navigate(action)
     }
 

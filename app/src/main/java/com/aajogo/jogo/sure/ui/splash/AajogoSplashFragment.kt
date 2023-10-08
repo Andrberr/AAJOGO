@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
 
 @AndroidEntryPoint
-class SplashFragment : Fragment() {
+class AajogoSplashFragment : Fragment() {
 
     private var _binding: FragmentSplashBinding? = null
     private val binding get() = _binding!!
@@ -31,12 +31,12 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initObserver()
-        viewModel.handleEvents(MainViewModel.ViewEvent.GetResponseFromUrl)
+        viewModel.handleEvents(MainViewModel.GetLinkFromAajogoUrlEvent.GetResponseFromUrl)
     }
 
     private fun initObserver() {
         viewModel.viewEffect.observe(viewLifecycleOwner) { effect ->
-            if (effect is MainViewModel.ViewEffect.UrlResponse) {
+            if (effect is MainViewModel.ViewAajogoEffect.AajogoUrlResponse) {
                 navigate(effect.response)
             } else {
                 Toast.makeText(requireContext(), NETWORK_ERROR, Toast.LENGTH_SHORT).show()
@@ -45,11 +45,11 @@ class SplashFragment : Fragment() {
     }
 
     private fun navigate(response: String) {
-        var action = SplashFragmentDirections.actionSplashFragmentToMenuFragment()
+        var action = AajogoSplashFragmentDirections.actionSplashFragmentToMenuFragment()
         if (response.contains(HTTP) || response.contains(HTTPS)) {
             val url = getUrlFromResponse(response)
             if (url != null) {
-                action = SplashFragmentDirections.actionSplashFragmentToWebViewFragment(url)
+                action = AajogoSplashFragmentDirections.actionSplashFragmentToWebViewFragment(url)
             }
         }
         findNavController().navigate(action)

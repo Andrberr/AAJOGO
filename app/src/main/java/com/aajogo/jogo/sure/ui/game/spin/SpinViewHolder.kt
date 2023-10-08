@@ -7,7 +7,7 @@ class SpinViewHolder(
     private val binding: SpinItemLayoutBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(resId: Int) {
+    fun bindKazinoSpin(resId: Int) {
         binding.itemImageView.setBackgroundResource(resId)
     }
 }

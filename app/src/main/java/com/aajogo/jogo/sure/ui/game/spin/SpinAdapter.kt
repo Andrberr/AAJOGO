@@ -16,10 +16,14 @@ class SpinAdapter : RecyclerView.Adapter<SpinViewHolder>() {
         return SpinViewHolder(binding)
     }
 
-    override fun getItemCount() = resIds.size
+    override fun getItemCount(): Int {
+        val countOfResIds = resIds.size
+        return countOfResIds
+    }
 
     override fun onBindViewHolder(holder: SpinViewHolder, position: Int) {
-        holder.bind(resIds[position])
+        val spin = resIds[position]
+        holder.bindKazinoSpin(spin)
     }
 
     @SuppressLint("NotifyDataSetChanged")
